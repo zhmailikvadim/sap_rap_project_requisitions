@@ -1,0 +1,71 @@
+managed;
+with draft;
+
+define behavior for ZNBS_I_PRJ_RQ alias ProjectReq
+implementation in class zbp_nbs_i_prj_rq unique
+persistent table znbs_prj_rq
+draft table znbs_prj_rq_d
+with additional save
+lock master total etag ProjectDescription
+etag master ProjectDescription
+{
+  field ( numbering : managed, readonly ) ProjectUUID;
+
+  create;
+  update;
+  delete;
+
+  determination project_fields_update on save
+  {
+    field ProjectDescription;
+    field ProjectStatusID;
+  }
+
+  action GeneratePDF result [1] ZNBS_I_PRJ_RQ;
+
+  mapping for znbs_prj_rq
+  {
+    ProjectUUID = projectuuid;
+    ProjectID = projectid;
+    ProjectDescription = projectdescription;
+    ProjectStatusID = projectstatusid;
+    ProjectStartDate = projectstartdate;
+    ProjectEndDate = projectenddate;
+    ProposedDevStartDate = proposeddevstartdate;
+    ProposedDevEndDate = proposeddevenddate;
+    ProjectManagerID = projectmanagerid;
+    ProjectManager = projectmanager;
+    TechnicalSMEID = technicalsmeid;
+    TechnicalSME = technicalsme;
+    NovartisSMEID = novartissmeid;
+    NovartisSME = novartissme;
+    RqEffortDate = rqeffortdate;
+    SbEffortDate = sbeffortdate;
+    TotalApprovedEffort = totalapprovedeffort;
+    ConsumedEffort = consumedeffort;
+    RemainingEffort = remainingeffort;
+    EffortStatusID = effortstatusid;
+    DevStatusID = devstatusid;
+    SOWNumber = sownumber;
+    FunctionalExpertID = functionalexpertid;
+    FunctionalExpert = functionalexpert;
+    TechnicalExpertID = technicalexpertid;
+    TechnicalExpert = technicalexpert;
+    RtQMilestone = rtqmilestone;
+    HCMilestone = hcmilestone;
+    Comments = comments;
+    CLS22Milestone1 = cls22milestone1;
+    CLS21Milestone2 = cls21milestone2;
+    CLS22Milestone2 = cls22milestone2;
+    CLS21Milestone1 = cls21milestone1;
+    EffortResponse = effortresponse;
+    EffortType = efforttype;
+    RequestorComments = requestorcomments;
+    BPComments = bpcomments;
+    Notification1 = notification1;
+    Notification2 = notification2;
+    ModifiedBy = modifiedby;
+    ItemType = itemtype;
+    Path = path;
+  }
+}

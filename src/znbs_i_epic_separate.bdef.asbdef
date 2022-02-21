@@ -1,0 +1,44 @@
+managed;
+with draft;
+
+define behavior for ZNBS_I_EPIC_SEPARATE alias Epic
+implementation in class zbp_nbs_i_epic_separate unique
+persistent table znbs_epic
+draft table znbs_epic_d
+lock master total etag Created
+etag master Created
+{
+  field ( numbering : managed, readonly ) EpicUUID;
+  field ( mandatory ) DueBy;
+  field ( readonly ) Changed, Created, SemanticID;
+  create;
+  update;
+  delete;
+
+  association _TaskSeparate { create; with draft; }
+
+  determination CalculateFields on save { create; }
+}
+
+
+define behavior for ZNBS_I_TASK_SEPARATE alias Task
+implementation in class zbp_nbs_i_epic_separate unique
+persistent table znbs_task
+draft table znbs_task_d
+lock dependent by _EpicSeparate
+etag master Created
+{
+
+  field ( numbering : managed, readonly ) TaskUUID;
+  field ( mandatory ) DueBy;
+  field ( readonly ) Changed, Created, EpicUUID, SemanticID, ProjectUUID;
+
+  update;
+  delete;
+
+  association _EpicSeparate { with draft; }
+
+  determination CalculateFields on save { create; }
+
+
+}

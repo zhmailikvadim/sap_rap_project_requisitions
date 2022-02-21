@@ -1,0 +1,17 @@
+managed; // implementation in class zbp_nbs_i_tech_sme unique;
+
+define behavior for ZNBS_I_TECH_SME alias TechnicalSME
+persistent table ZNBS_TECH_SME
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+   mapping for znbs_tech_sme
+  {
+   TechnicalSMEID = technicalsmeid;
+   TechnicalSME = technicalsme;
+  }
+}

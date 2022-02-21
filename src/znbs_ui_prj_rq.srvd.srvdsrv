@@ -1,0 +1,9 @@
+@EndUserText.label: 'Service Definition for Project Req.'
+define service ZNBS_UI_PRJ_RQ {
+  expose ZNBS_C_PRJ_RQ as ProjectRequisition;
+  expose ZNBS_I_PRJ_RQ_CHDO as ChangeDocument;
+  expose ZNBS_I_PRJ_STATUS as ProjectStatus;
+  expose ZNBS_C_EMPLOYEE as Employee;
+  expose ZNBS_PI_PRJRQ_HISTORY as ProjectHistory;
+  expose ZNBS_VH_PROJECT_MANAGER as ProjectManager;
+}

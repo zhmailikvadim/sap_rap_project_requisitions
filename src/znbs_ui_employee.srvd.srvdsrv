@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Employee'
+define service ZNBS_UI_EMPLOYEE {
+  expose ZNBS_C_EMPLOYEE as Employee;
+}

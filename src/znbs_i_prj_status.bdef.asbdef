@@ -1,0 +1,20 @@
+managed; //implementation in class zbp_nbs_i_prj_status unique;
+
+define behavior for ZNBS_I_PRJ_STATUS alias ProjectStatus
+persistent table znbs_prj_status
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  mapping for znbs_prj_status
+  {
+    ProjectStatusID = projectstatusid;
+    StatusType = statustype;
+    ProcessFlowPosition = flowposition;
+    ProjectStatus = projectstatus;
+  }
+}

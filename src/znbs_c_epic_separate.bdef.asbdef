@@ -1,0 +1,20 @@
+projection;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+use draft;
+
+define behavior for ZNBS_C_EPIC_SEPARATE alias Epic
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _TaskSeparate { create; with draft; }
+}
+
+define behavior for ZNBS_C_TASK_SEPARATE alias Task
+{
+  use update;
+  use delete;
+
+  use association _EpicSeparate { with draft; }
+}

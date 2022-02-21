@@ -1,0 +1,10 @@
+@EndUserText.label: 'Access Control for ZNBS_C_PROJECTS'
+@MappingRole: true
+define role ZNBS_C_PROJECTS {
+    grant
+        select
+            on
+                ZNBS_C_PROJECTS 
+                    where
+                        inheriting conditions from entity ZNBS_I_PROJECTS;
+}

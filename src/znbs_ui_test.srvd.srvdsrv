@@ -1,0 +1,4 @@
+@EndUserText.label: 'Test read mode'
+define service ZNBS_UI_TEST {
+  expose znbs_i_test as DevelopmentProfiles;
+}

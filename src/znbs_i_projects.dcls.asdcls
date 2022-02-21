@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access Control for ZNBS_I_PROJECTS'
+@MappingRole: true
+define role ZNBS_I_PROJECTS {
+    grant
+        select
+            on
+                ZNBS_I_PROJECTS                    
+                    where
+                        true; 
+                
+}

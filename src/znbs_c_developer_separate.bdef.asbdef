@@ -1,0 +1,31 @@
+projection;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+use draft;
+
+define behavior for ZNBS_C_DEVELOPER_SEPARATE alias Developer
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _DeveloperEpics { create; with draft; }
+  use association _DeveloperProfiles { create; with draft; }
+
+}
+
+define behavior for ZNBS_C_DEVELOPER_EPICS alias Epic
+{
+  use update;
+  use delete;
+
+  use association _DeveloperSeparate { with draft; }
+
+}
+define behavior for ZNBS_C_DEVELOPER_PROFILES alias Profile
+{
+  use update;
+  use delete;
+
+  use association _DeveloperSeparate { with draft; }
+
+}

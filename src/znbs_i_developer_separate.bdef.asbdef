@@ -1,0 +1,47 @@
+managed implementation in class zbp_nbs_i_developer_separate unique;
+with draft;
+
+define behavior for ZNBS_I_DEVELOPER_SEPARATE alias Developer
+persistent table znbs_developer
+draft table znbs_developer_d
+lock master total etag Created
+etag master Created
+{
+field ( numbering : managed, readonly ) DeveloperUUID;
+  create;
+  update;
+  delete;
+  association _DeveloperProfiles { create; with draft; }
+  association _DeveloperEpics { create; with draft; }
+}
+
+define behavior for ZNBS_I_DEVELOPER_PROFILES alias Profile
+persistent table znbs_dev_profs
+draft table znbs_dev_profs_d
+lock dependent by _DeveloperSeparate
+etag master Created
+{
+
+field ( numbering : managed, readonly ) Uuid;
+  update;
+  delete;
+  field ( readonly ) Developeruuid,Changed,Created;
+  association _DeveloperSeparate { with draft; }
+}
+
+define behavior for ZNBS_I_DEVELOPER_EPICS alias Epic
+persistent table znbs_epic
+draft table znbs_epic_d
+lock dependent by _DeveloperSeparate
+etag master Created
+{
+
+field ( numbering : managed, readonly ) EpicUUID;
+  update;
+  delete;
+  field ( readonly ) Developer,Changed,Created,SemanticID;
+  field(mandatory) ProjectUUID;
+  association _DeveloperSeparate { with draft; }
+
+    determination CalculateFields on save { create; }
+}

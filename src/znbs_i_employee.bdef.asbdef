@@ -1,0 +1,19 @@
+managed; // implementation in class zbp_nbs_i_employee unique;
+
+define behavior for ZNBS_I_EMPLOYEE alias Employee
+persistent table znbs_employee
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  mapping for znbs_employee
+  {
+    EmployeeID = employeeid;
+    RoleID = roleid;
+    Name = name;
+  }
+}

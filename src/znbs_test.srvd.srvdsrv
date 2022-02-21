@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZNBS_TEST'
+define service ZNBS_TEST {
+  expose ZNBS_C_PROJECTS as Projects;
+}

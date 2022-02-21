@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZNBS_I_PRJ_RQ'
+@MappingRole: true
+define role ZNBS_I_PRJ_RQ {
+    grant
+        select
+            on
+                ZNBS_I_PRJ_RQ
+                    where
+                        true;
+                        
+}

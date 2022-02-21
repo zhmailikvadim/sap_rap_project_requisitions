@@ -1,0 +1,19 @@
+managed; // implementation in class zbp_nbs_i_role unique;
+
+
+define behavior for ZNBS_I_ROLE alias Role
+persistent table znbs_prj_role
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  mapping for znbs_prj_role
+  {
+    RoleID = roleid;
+    Role = role;
+  }
+}

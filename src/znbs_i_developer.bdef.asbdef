@@ -1,0 +1,23 @@
+managed;
+
+define behavior for ZNBS_I_DEVELOPER alias Developer
+implementation in class ZBP_NBS_I_DEVELOPER unique
+persistent table ZNBS_DEVELOPER
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) DeveloperUUID;
+
+   mapping for znbs_developer
+  {
+   DeveloperUUID = developeruuid;
+   DeveloperName = developername;
+   DeveloperDescription =developerdescription;
+   DeveloperEmail = developeremail;
+  }
+}

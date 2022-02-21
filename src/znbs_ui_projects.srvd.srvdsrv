@@ -1,0 +1,14 @@
+@EndUserText.label: 'Service definition for Projects'
+define service znbs_ui_projects {
+  expose ZNBS_C_PROJECTS as KALYAN_PROJECTS;
+  expose ZNBS_C_EPIC_SEPARATE as KALYAN_EPICSSEPARATE;
+  expose ZNBS_C_DEVELOPER_SEPARATE as KALYAN_DEVELOPERSEPARATE;
+  expose ZNBS_C_TASK_SEPARATE as KALYAN_TASKSSEPARATE;
+  expose ZNBS_C_PARTNRERS as Partners;
+  expose ZNBS_C_EPIC as Epic;
+  expose ZNBS_C_PRJ_TEAMS as Team;
+  expose ZNBS_C_TASK as Task;
+  expose ZNBS_C_DEVELOPER_PROFILES as DeveloperProfiles;
+  expose ZNBS_C_DEVELOPER_EPICS as DeveloperEpics;
+  expose ZNBS_C_DEVELOPER_FOR_PROJECT as DeveloperForProject;
+}

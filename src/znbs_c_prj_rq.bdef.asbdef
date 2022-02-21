@@ -1,0 +1,12 @@
+projection;
+use draft;
+
+define behavior for ZNBS_C_PRJ_RQ alias ProjectReq
+
+{
+  use create;
+  use update;
+  use delete;
+  use action GeneratePDF;
+
+}

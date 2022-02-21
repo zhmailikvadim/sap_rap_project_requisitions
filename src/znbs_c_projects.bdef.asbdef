@@ -1,0 +1,42 @@
+projection;
+use draft;
+
+define behavior for ZNBS_C_PROJECTS alias Projects
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+   use association _Epic { create;with draft; }
+   use association _Teams { create; with draft;}
+}
+
+define behavior for ZNBS_C_EPIC alias Epic
+{
+  use update;
+  use delete;
+
+  use association _Projects{ with draft;}
+  use association _Task { create; with draft;}
+
+}
+
+define behavior for ZNBS_C_PRJ_TEAMS alias Team
+{
+  use update;
+  use delete;
+
+  use association _Projects{ with draft;}
+
+}
+
+define behavior for ZNBS_C_TASK alias Task
+{
+  use update;
+  use delete;
+
+  use association _Projects{ with draft;}
+  use association _Epic{ with draft;}
+
+}

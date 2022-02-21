@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Project Status'
+define service ZNBS_UI_PRJ_STATUS {
+  expose ZNBS_C_PRJ_STATUS as ProjectStatus;
+}

@@ -1,0 +1,172 @@
+managed;
+with draft;
+
+define behavior for znbs_i_projects alias Projects
+implementation in class ZBP_NBS_I_PROJECTS unique
+persistent table znbs_projects
+draft table znbs_projects_d
+lock master total etag Changed
+etag master Changed
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) ProjectUUID;
+  field ( readonly ) SemanticID, Created, Changed;
+  mapping for znbs_projects
+  {
+    Category1 = category1;
+    Category2 = category2;
+    Category3 = category3;
+    Category4 = category4;
+    Changed = changed;
+    Configurationitem = configurationitem;
+    Created = created;
+    Description = description;
+    Dueby = dueby;
+    Effort = effort;
+    ProjectUUID = uuid;
+    Projectstatus = projectstatus;
+    Projectsubstatus = projectsubstatus;
+    Reportedby = reportedby;
+    SemanticID = semanticid;
+    Ticketowner = ticketowner;
+
+
+  }
+
+  association _Epic { create; with draft; }
+  association _Teams { create; with draft; }
+  //   association _Task  { create; with draft;}
+  //  association _DeveloperForProject { create; with draft; }
+
+  determination CalculateFields on save { create; }
+
+}
+
+
+define behavior for znbs_i_epic alias Epic
+implementation in class ZBP_NBS_I_PROJECTS unique
+persistent table znbs_epic
+draft table znbs_epic_d
+etag master Changed
+lock dependent by _Projects
+{
+  update;
+  delete;
+
+  association _Projects { with draft; }
+  association _Task { create ( features : instance ); with draft; }
+
+  field ( numbering : managed, readonly ) EpicUUID;
+  field ( readonly ) ProjectUUID, SemanticID, Created, Changed;
+
+  mapping for znbs_epic
+  {
+    EpicUUID = epicuuid;
+    ProjectUUID = projectuuid;
+    SemanticID = semanticid;
+    EpicDescription = epicdescription;
+    EpicStatus = epicstatus;
+    Created = created;
+    Changed = changed;
+    Dueby = dueby;
+    MPTStatus = mptstatus;
+    DDNumber = ddnumber;
+    FSNumber = fsnumber;
+    Developer = developer;
+
+  }
+  determination CalculateFields on save { create; }
+}
+
+define behavior for ZNBS_I_PRJ_TEAMS alias Team
+implementation in class ZBP_NBS_I_PROJECTS unique
+persistent table znbs_prj_teams
+draft table znbs_prj_teams_d
+etag master Changed
+lock dependent by _Projects
+{
+  update;
+  delete;
+
+  association _Projects { with draft; }
+
+  field ( numbering : managed, readonly ) uuid;
+  field ( readonly ) ProjectUUID, Created, Changed;
+
+  mapping for znbs_prj_teams
+  {
+    uuid = uuid;
+    ProjectUUID = projectuuid;
+    TeamID = teamid;
+    Created = created;
+    Changed = changed;
+  }
+}
+
+define behavior for ZNBS_I_TASK alias Task
+implementation in class ZBP_NBS_I_PROJECTS unique
+persistent table znbs_task
+draft table znbs_task_d
+etag master Changed
+lock dependent by _Projects
+{
+  update;
+  delete;
+
+  association _Epic { with draft; }
+  association _Projects { with draft; }
+
+  field ( numbering : managed, readonly ) TaskUUID;
+  field ( readonly ) EpicUUID, ProjectUUID, SemanticID, Created, Changed;
+
+  determination CalculateFields on save { create; }
+
+  mapping for znbs_task
+  {
+    Changed = changed;
+    Created = created;
+    DueBy = dueby;
+    EpicUUID = epicuuid;
+    ProjectUUID = projectuuid;
+    SemanticID = semanticid;
+    TaskDescription = taskdescription;
+    TaskStatus = taskstatus;
+    TaskUUID = taskuuid;
+
+  }
+}
+
+//define behavior for ZNBS_I_DEVELOPER_FOR_PROJECT alias Project
+//implementation in class ZBP_NBS_I_PROJECTS unique
+//persistent table znbs_task
+//draft table znbs_task_d
+//etag master Changed
+//lock dependent by _Projects
+//{
+//  update;
+//  delete;
+//
+//  association _Epic { with draft; }
+//  association _Projects { with draft; }
+//
+//  field ( numbering : managed, readonly ) TaskUUID;
+//  field ( readonly ) EpicUUID, ProjectUUID, SemanticID, Created, Changed;
+//
+//  determination CalculateFields on save { create; }
+//
+//  mapping for znbs_task
+//  {
+//    Changed = changed;
+//    Created = created;
+//    DueBy = dueby;
+//    EpicUUID = epicuuid;
+//    ProjectUUID = projectuuid;
+//    SemanticID = semanticid;
+//    TaskDescription = taskdescription;
+//    TaskStatus = taskstatus;
+//    TaskUUID = taskuuid;
+//
+//  }}

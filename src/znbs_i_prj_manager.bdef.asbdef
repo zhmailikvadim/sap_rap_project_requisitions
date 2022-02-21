@@ -1,0 +1,18 @@
+managed; //implementation in class zbp_nbs_i_prj_manager unique;
+
+define behavior for ZNBS_I_PRJ_MANAGER alias ProjectManager
+persistent table ZNBS_PRJ_MANAGER
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+     mapping for znbs_prj_manager
+  {
+   ProjectManagerID = projectmanagerid;
+   ProjectManager = projectmanager;
+  }
+}

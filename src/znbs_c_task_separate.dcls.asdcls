@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZNBS_C_TASK_SEPARATE'
+@MappingRole: true
+define role ZNBS_C_TASK_SEPARATE {
+    grant
+        select
+            on
+                ZNBS_C_TASK_SEPARATE
+                    where
+                        inheriting conditions from entity ZNBS_I_TASK_SEPARATE;
+                        
+}

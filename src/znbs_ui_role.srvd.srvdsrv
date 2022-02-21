@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Role'
+define service ZNBS_UI_ROLE {
+  expose ZNBS_C_ROLE as Role;
+}

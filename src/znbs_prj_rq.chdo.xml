@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CHDO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <CHDO>
+    <REPORTS_GENERATED>
+     <TCDRPS>
+      <OBJECT>ZNBS_PRJ_RQ</OBJECT>
+      <REPORTNAME>*CLASS_GEN*</REPORTNAME>
+      <TEXTCASE>X</TEXTCASE>
+      <ARBGEB>CD</ARBGEB>
+      <FEHLERNR>600</FEHLERNR>
+     </TCDRPS>
+    </REPORTS_GENERATED>
+    <OBJECTS>
+     <TCDOBS>
+      <OBJECT>ZNBS_PRJ_RQ</OBJECT>
+      <TABNAME>ZNBS_PRJ_RQ</TABNAME>
+      <DOCUD_NOIF>X</DOCUD_NOIF>
+     </TCDOBS>
+    </OBJECTS>
+    <OBJECTS_TEXT>
+     <item>
+      <OBJECT>ZNBS_PRJ_RQ</OBJECT>
+      <OBTEXT>Single Case: Update</OBTEXT>
+      <LANG_ISO>EN</LANG_ISO>
+     </item>
+    </OBJECTS_TEXT>
+   </CHDO>
+  </asx:values>
+ </asx:abap>
+</abapGit>

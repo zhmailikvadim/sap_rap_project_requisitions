@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition'
+define service ZNBS_UI_PRJ_RQ_CHDO {
+  expose ZNBS_I_PRJ_RQ_CHDO as ChangeDocument;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Serv Definition for Developer'
+define service ZNBS_UI_DEVELOPER {
+  expose ZNBS_C_DEVELOPER as Developer;
+}

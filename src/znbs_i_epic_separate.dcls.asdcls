@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZNBS_I_EPIC_SEPARATE'
+@MappingRole: true
+define role ZNBS_I_EPIC_SEPARATE {
+    grant
+        select
+            on
+                ZNBS_I_EPIC_SEPARATE
+                    where
+                        true;
+                        
+}

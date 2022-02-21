@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Technical SME'
+define service ZNBS_UI_TECH_SME {
+  expose ZNBS_C_TECH_SME as TechnicalSME;
+}

@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZNBS_C_PRJ_STATUS'
+@MappingRole: true
+define role ZNBS_C_PRJ_STATUS {
+    grant
+        select
+            on
+                ZNBS_C_PRJ_STATUS
+                    where
+                        inheriting conditions from entity ZNBS_I_PRJ_STATUS;
+                        
+}

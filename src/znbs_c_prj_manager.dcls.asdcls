@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZNBS_C_PRJ_MANAGER'
+@MappingRole: true
+define role ZNBS_C_PRJ_MANAGER {
+    grant
+        select
+            on
+                ZNBS_C_PRJ_MANAGER
+                    where
+                        inheriting conditions from entity ZNBS_I_PRJ_MANAGER;
+                        
+}
